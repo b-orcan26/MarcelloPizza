@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Entities.Concrete.Kategori>
+
+@{
+    ViewData["Title"] = "Kategori Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Logo)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <p class="my-auto">
+                        @Html.DisplayFor(modelItem => item.Ad)
+                    </p>
+
+                </td>
+                <td>
+                    @if (item.Logo != null)
+                    {
+                        <img src="~/logo/@(item.Logo)" style="height:64px;width:64px;" />
+                    }
+
+                </td>
+                <td>
+                    @Html.ActionLink("Duzenle", "KategoriDuzenle", new { id = item.Id }) |
+                    @Html.ActionLink("Sil", "KategoriSil", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

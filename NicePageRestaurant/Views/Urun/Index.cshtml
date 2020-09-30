@@ -1,0 +1,89 @@
+﻿@model IEnumerable<DTO.UrunListDTO>
+
+@{
+    ViewData["Title"] = "Urun Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Icindekiler)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fiyat)
+                </th>
+                <th>
+                    Kategori
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Icindekiler)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fiyat) ₺
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Kategori.Ad)
+                    </td>
+                    <td>
+                        <a asp-action="UrunDuzenle" asp-controller="Urun" asp-route-id="@item.Id" class="btn btn-warning">Düzenle</a>
+
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-itemid="@(item.Id)" data-target="#exampleModal">
+                            Sil
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+<div class="modal fade" id="exampleModal" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-danger"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+            <div class="modal-header">
+                <h5 class="modal-title">Silmek istediğinizden emin misiniz?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Kapat</button>
+                <button type="button" id="modal-btn-si" class="btn btn-outline-light">Sil</button>
+            </div>
+        </div>
+    </div>
+</div>
+    @section Scripts{
+
+        <script type="text/javascript">
+            $('#exampleModal').on('show.bs.modal', function (event) {
+                
+                $(this).show();
+                var button = $(event.relatedTarget)
+                var itemId = button.data('itemid')
+
+                $("#modal-btn-si").on("click", function () {
+                    window.location.href = "/Urun/UrunSil?id=" + itemId;
+                });
+            })
+        </script>
+
+    }

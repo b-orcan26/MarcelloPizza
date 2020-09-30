@@ -1,0 +1,33 @@
+﻿@model Entities.Concrete.Iletisim 
+@{
+    ViewData["Title"] = "Iletisim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row" style="margin-top:50px; margin-bottom:150px;">
+        <div class="col-6 d-block">
+            <img class="ml-auto d-flex  img-fluid rounded" src="http://pizzahouse.themerex.net/wp-content/uploads/2016/08/image_1.jpg" style="max-height:415px;"  @*style="width:540px;height:415px;"*@ />
+        </div>
+        <div class="col-6">
+            <div>
+                <h4 class="text-center"> <b>İletişim Bilgileri</b> </h4>
+                <hr />
+                <div class="">
+                    <img src="~/img/locations.png" style="height:20px;width:20px;" class="float-left" />
+                    <p class="pl-5">@Model.Adres</p>
+                </div>
+                <div class="">
+                    <img src="~/img/time.png" style="height:20px;width:20px;" class="float-left" />
+                    <p class="pl-5">@Model.CalismaSaatleri</p>
+                </div>
+                <div class="">
+                    <img src="~/img/phoneYellow.png" style="height:20px;width:20px;" class="float-left" />
+                    <p class="pl-5">@Model.Telefon</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
