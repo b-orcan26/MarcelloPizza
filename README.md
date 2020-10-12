@@ -6,4 +6,5 @@ Kullanılan Araçlar ve Teknolojiler : Asp.net Core MVC , AutoMapper , FluentVal
 
 # Ekran Görüntüleri
 
-!s1([https://i.resimyukle.xyz/c0OTQP.png])
+![s1](https://i.resimyukle.xyz/c0OTQP.png)
+![s2](https://i.resimyukle.xyz/7PVIdG.png)
